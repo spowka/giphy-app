@@ -4,14 +4,12 @@ import { GiphyLayoutComponent } from './giphy-layout.component';
 import { SharedModule } from '@shared/shared.module';
 import { CoreModule } from '@core/core.module';
 import { GiphyLayoutRoutingModule } from './giphy-layout-routing.module';
+import { GiphyService } from './services/giphy.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [GiphyLayoutComponent],
-  imports: [
-    CommonModule,
-    GiphyLayoutRoutingModule,
-    CoreModule,
-    SharedModule,
-  ]
+  imports: [CommonModule, HttpClientModule, GiphyLayoutRoutingModule, CoreModule, SharedModule],
+  providers: [GiphyService],
 })
-export class GiphyLayoutModule { }
+export class GiphyLayoutModule {}

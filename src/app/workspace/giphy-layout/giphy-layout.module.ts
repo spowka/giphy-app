@@ -6,9 +6,10 @@ import { CoreModule } from '@core/core.module';
 import { GiphyLayoutRoutingModule } from './giphy-layout-routing.module';
 import { GiphyService } from './services/giphy.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GiphyGifComponent } from './components/giphy-gif/giphy-gif.component';
 
 @NgModule({
-  declarations: [GiphyLayoutComponent],
+  declarations: [GiphyLayoutComponent, GiphyGifComponent],
   imports: [CommonModule, HttpClientModule, GiphyLayoutRoutingModule, CoreModule, SharedModule],
   providers: [GiphyService],
 })

@@ -1,5 +1,5 @@
 export interface IGiphyResponse {
-  data: IGiphyData;
+  data: IGiphyData[];
   meta: IGiphyMeta;
   pagination: IGiphyPagination;
 }

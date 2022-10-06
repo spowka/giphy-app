@@ -1,1 +1,24 @@
-<app-navbar></app-navbar>
+<div class="giphy-layout">
+  <app-navbar></app-navbar>
+
+  <ng-container *ngIf="!(loading$ | async); else loadingSpinner">
+    <div class="giphy-grid">
+      <app-giphy-gif *ngFor="let gifs of giphyGifs$ | async" [url]="gifs.images.fixed_width.webp"
+        [name]="gifs.username">
+      </app-giphy-gif>
+    </div>
+
+    <ng-container *ngIf="(pagination$ | async) as pagination">
+      <mat-paginator class="giphy-paginator" *ngIf="pagination.total_count" [length]="pagination.total_count"
+        [pageSize]="pagination.limit" [pageIndex]="pagination.offset / pagination.limit" aria-label="Select page"
+        (page)="onChangePage($event)">
+      </mat-paginator>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loadingSpinner>
+    <div class="giphy-loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</div>

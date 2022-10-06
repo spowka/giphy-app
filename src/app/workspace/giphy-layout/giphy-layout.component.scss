@@ -1,0 +1,26 @@
+.giphy-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.giphy-grid {
+  max-width: 80%;
+  margin-top: 100px;
+  align-self: center;
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  grid-gap: 10px;
+  gap: 50px;
+}
+
+.giphy-loading-spinner {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.giphy-paginator {
+  margin-top: 30px;
+}

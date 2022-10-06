@@ -1,7 +1,15 @@
 .giphy-navbar-header {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   padding: 8px 16px;
-  min-height: 50px;
+  min-height: 100px;
+}
+
+.giphy-form {
+  font-size: 16px;
+}
+
+.giphy-form-field {
+  width: 300px;
 }

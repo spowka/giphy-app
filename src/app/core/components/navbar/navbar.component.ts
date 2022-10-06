@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { GiphySearchOptions } from '@core/definitions/giphy-search-options';
+import { debounceTime, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
+  public searchControl: FormControl;
+  public giphySearchOptions = GiphySearchOptions;
 
-  constructor() { }
+  private unsubscribe$: Subject<void> = new Subject();
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) {
+    this.searchControl = this.fb.control('');
   }
 
+  ngOnInit(): void {
+    this.searchControl.valueChanges
+      .pipe(takeUntil(this.unsubscribe$), debounceTime(300))
+      .subscribe((value) => console.log(value));
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 }
